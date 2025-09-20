@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import matplotlib.pyplot as plt
 
-API_KEY = "YOUR_API_KEY"
+API_KEY = AIzaSyAhx1zMNWGZG2a45ZXm6o825Zzcjv-bUGk
 
 st.title("Path Profile Checker")
 
