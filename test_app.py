@@ -13,6 +13,8 @@ if st.button("Check Path Profile"):
     path = f"{tx}|{rx}"
     url = f"https://maps.googleapis.com/maps/api/elevation/json?path={path}&samples=50&key={API_KEY}"
     response = requests.get(url).json()
+    st.write(response)
+
 
     profile = [p["elevation"] for p in response["results"]]
 
