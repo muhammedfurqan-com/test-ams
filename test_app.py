@@ -60,8 +60,8 @@ if st.button("Generate Path Profile"):
 
 st.title("Path Profile Checker")
 
-tx = st.text_input("TX coordinates (lat,lon)", "33.6844,73.0479")
-rx = st.text_input("RX coordinates (lat,lon)", "32.0836,72.6711")
+#tx = st.text_input("TX coordinates (lat,lon)", "33.6844,73.0479")
+#rx = st.text_input("RX coordinates (lat,lon)", "32.0836,72.6711")
 
 if st.button("Check Path Profile"):
     path = f"{tx}|{rx}"
