@@ -69,19 +69,15 @@ url = f"https://maps.googleapis.com/maps/api/elevation/json?path={path}&samples=
 response = requests.get(url).json()
     #st.write(response)
 profile = [p["elevation"] for p in response["results"]]
-
-
    
-
     # Create figure
     
-    fig, ax = plt.subplots(figsize=(8,4))
-    ax.plot(profile, color="blue", linewidth=2)   # Blue line
-    ax.fill_between(range(len(profile)), profile, color="skyblue", alpha=0.3)  # Fill under curve
+fig, ax = plt.subplots(figsize=(8,4))
+ax.plot(profile, color="blue", linewidth=2)   # Blue line
+ax.fill_between(range(len(profile)), profile, color="skyblue", alpha=0.3)  # Fill under curve
+ax.set_title("Elevation Profile", fontsize=14)
+ax.set_xlabel("Sample Point")
+ax.set_ylabel("Elevation (m AMSL)")
+ax.grid(True, linestyle="--", alpha=0.5)
 
-    ax.set_title("Elevation Profile", fontsize=14)
-    ax.set_xlabel("Sample Point")
-    ax.set_ylabel("Elevation (m AMSL)")
-    ax.grid(True, linestyle="--", alpha=0.5)
-
-    st.pyplot(fig)
+st.pyplot(fig)
