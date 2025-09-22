@@ -70,9 +70,10 @@ st.title("Path Profile Checker")
     #st.write(response)
 
 
-   profile = [p["elevation"] for p in response["results"]]
+   
 
     # Create figure
+    profile = [p["elevation"] for p in response["results"]]
     fig, ax = plt.subplots(figsize=(8,4))
     ax.plot(profile, color="blue", linewidth=2)   # Blue line
     ax.fill_between(range(len(profile)), profile, color="skyblue", alpha=0.3)  # Fill under curve
