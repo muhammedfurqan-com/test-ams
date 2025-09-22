@@ -11,6 +11,26 @@ tx = st.text_input("TX coordinates (lat,lon)", "33.6844,73.0479")
 rx = st.text_input("RX coordinates (lat,lon)", "32.0836,72.6711")
 samples = st.slider("Number of samples along the path", 10, 500, 100)
 
+if st.button("Fetch Elevation Data"):
+    path = f"{tx}|{rx}"
+    url = f"https://maps.googleapis.com/maps/api/elevation/json?path={path}&samples={samples}&key={API_KEY}"
+    response = requests.get(url).json()
+
+    if response.get("status") == "OK" and "results" in response:
+        elevations = [p["elevation"] for p in response["results"]]
+
+        min_elev = min(elevations)
+        max_elev = max(elevations)
+        start_elev = elevations[0]
+        end_elev = elevations[-1]
+
+        st.write(f"**Start point elevation (TX):** {start_elev:.1f} m")
+        st.write(f"**End point elevation (RX):** {end_elev:.1f} m")
+        st.write(f"**Minimum elevation along path:** {min_elev:.1f} m")
+        st.write(f"**Maximum elevation along path:** {max_elev:.1f} m")
+    else:
+        st.error(f"Error: {response.get('error_message', response.get('status'))}")
+
 if st.button("Generate Path Profile"):
     # Build API request
     path = f"{tx}|{rx}"
