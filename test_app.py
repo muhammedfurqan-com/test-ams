@@ -70,7 +70,7 @@ st.title("Path Profile Checker")
     #st.write(response)
 
 
-   # profile = [p["elevation"] for p in response["results"]]
+   profile = [p["elevation"] for p in response["results"]]
 
     # Create figure
     fig, ax = plt.subplots(figsize=(8,4))
